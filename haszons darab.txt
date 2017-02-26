@@ -1,0 +1,12 @@
+function TimeDiff() {
+  this._lastTime = 0;
+  this.hasElapsed = function (validatorFunction, resetOnTrue) {
+    const thisTime = Date.now();
+    const diff = thisTime - this._lastTime;
+    const result = validatorFunction(diff);
+    if (resetOnTrue && result) {
+      this._lastTime = thisTime;
+    }
+    return result;
+  };
+}
